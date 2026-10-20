@@ -1,14 +1,31 @@
-# MIO Backend
+# MIO
 
 **MIO — Personal Finance Management System**
 
+MIO is a personal finance management application designed to help users organize their financial activities and track their income and expenses.
+
 ## Overview
 
-MIO is a personal finance management application designed to help users organize and manage their financial activities.
+This repository contains the backend implementation of MIO, built with ASP.NET Core and organized using Clean Architecture principles.
 
-This repository contains the backend solution, structured using Clean Architecture principles to promote separation of concerns, maintainability, and testability.
+## Tech Stack
 
-## Solution Structure
+- C#
+- ASP.NET Core Web API
+- Entity Framework Core
+- ASP.NET Core Identity
+- SQL Server *(if selected as the project database)*
+
+## Architecture
+
+The solution follows Clean Architecture principles, separating business logic from application orchestration and infrastructure concerns.
+
+- **MIO.Domain** — Domain entities, business concepts, domain events, and shared domain abstractions.
+- **MIO.Application** — Application-level abstractions and use-case orchestration.
+- **MIO.Infrastructure** — Database access, persistence configuration, and infrastructure integrations.
+- **MIO.Api** — The HTTP API entry point.
+
+## Project Structure
 
 ```text
 MIO/
@@ -23,33 +40,30 @@ MIO/
 └── README.md
 ```
 
-## Architecture Overview
-
-The solution is organized into four main projects:
-
-- **MIO.Api** — The entry point for HTTP requests and API configuration.
-- **MIO.Application** — The application layer, responsible for application-level abstractions and use cases.
-- **MIO.Domain** — The core domain layer, containing domain models and business rules.
-- **MIO.Infrastructure** — The infrastructure layer, responsible for persistence and external technical integrations.
-
-## Technology Stack
-
-- C#
-- .NET
-- ASP.NET Core Web API
-- Clean Architecture
-
-Additional technologies and dependencies will be documented as they are introduced.
-
-## Development Status
-
-The solution structure has been initialized. Domain logic, application abstractions, and infrastructure configuration are being developed incrementally.
-
 ## Getting Started
 
-1. Install the .NET SDK compatible with the project target framework.
-2. Clone the repository.
-3. Open `src/MIO.slnx` using a compatible IDE or the .NET CLI.
-4. Restore dependencies and build the solution.
+### Prerequisites
 
-Application-specific configuration and execution instructions will be added as the backend implementation progresses.
+- .NET SDK compatible with the project target framework
+- An IDE such as Visual Studio or Visual Studio Code
+- SQL Server, if configured as the database provider
+
+### Setup
+
+1. Clone the repository.
+2. Open `src/MIO.slnx`.
+3. Configure the required application settings and database connection.
+4. Restore dependencies and build the solution.
+5. Run the `MIO.Api` project.
+
+## Configuration
+
+Configure environment-specific settings locally. Do not commit passwords, credentials, API keys, or production connection strings to source control.
+
+## Testing
+
+Automated tests will be documented here as the test projects and test suites are implemented.
+
+## Project Status
+
+The project is currently under development. Features and setup instructions may evolve as development progresses.
