@@ -1,31 +1,56 @@
-# MIO
+# MIO Backend
 
 **MIO — Personal Finance Management System**
 
-MIO is a personal finance management application designed to help users organize their financial activities and track their income and expenses.
-
 ## Overview
 
-This repository contains the backend implementation of MIO, built with ASP.NET Core and organized using Clean Architecture principles.
+MIO is a personal finance management application built with a backend architecture based on Clean Architecture principles.
 
-## Tech Stack
-
-- C#
-- ASP.NET Core Web API
-- Entity Framework Core
-- ASP.NET Core Identity
-- SQL Server *(if selected as the project database)*
+The solution separates domain concepts, application-level abstractions, API configuration, and infrastructure concerns.
 
 ## Architecture
 
-The solution follows Clean Architecture principles, separating business logic from application orchestration and infrastructure concerns.
+### MIO.Api
 
-- **MIO.Domain** — Domain entities, business concepts, domain events, and shared domain abstractions.
-- **MIO.Application** — Application-level abstractions and use-case orchestration.
-- **MIO.Infrastructure** — Database access, persistence configuration, and infrastructure integrations.
-- **MIO.Api** — The HTTP API entry point.
+The entry point for HTTP requests and API configuration.
 
-## Project Structure
+### MIO.Application
+
+Contains application-level abstractions and the foundation for implementing application use cases.
+
+Current foundation:
+
+- `IAppDbContext` — Abstraction for database access through Entity Framework Core.
+
+### MIO.Domain
+
+Contains the foundational domain abstractions:
+
+- `Entity` and `AuditableEntity`.
+- Domain event abstractions.
+- Result Pattern and structured error abstractions.
+
+### MIO.Infrastructure
+
+Contains infrastructure implementations and persistence configuration.
+
+Current foundation:
+
+- `AppDbContext` — Entity Framework Core context integrated with ASP.NET Core Identity.
+- Model configuration discovery through `ApplyConfigurationsFromAssembly`.
+
+## Technology Stack
+
+- C#
+- .NET
+- ASP.NET Core Web API
+- Entity Framework Core
+- ASP.NET Core Identity
+- Clean Architecture
+
+The database provider and remaining dependencies should be documented once their configuration is finalized.
+
+## Solution Structure
 
 ```text
 MIO/
@@ -40,30 +65,43 @@ MIO/
 └── README.md
 ```
 
+## Development Status
+
+- [x] Initialize the Clean Architecture solution structure.
+- [x] Establish the domain foundation and Result Pattern.
+- [x] Introduce the application database-context abstraction.
+- [x] Establish the initial EF Core context in Infrastructure.
+- [ ] Configure the database provider and connection settings.
+- [ ] Implement application use cases.
+- [ ] Add database migrations and automated tests.
+
 ## Getting Started
 
 ### Prerequisites
 
-- .NET SDK compatible with the project target framework
-- An IDE such as Visual Studio or Visual Studio Code
-- SQL Server, if configured as the database provider
+- The .NET SDK compatible with the project target framework.
+- A compatible IDE or the .NET CLI.
 
 ### Setup
 
 1. Clone the repository.
 2. Open `src/MIO.slnx`.
-3. Configure the required application settings and database connection.
-4. Restore dependencies and build the solution.
-5. Run the `MIO.Api` project.
+3. Restore dependencies.
+4. Configure the required database settings locally.
+5. Build the solution.
 
-## Configuration
+Database creation, migrations, and API execution instructions will be added once their configuration is complete.
 
-Configure environment-specific settings locally. Do not commit passwords, credentials, API keys, or production connection strings to source control.
+## Configuration and Security
+
+Do not commit passwords, API keys, production credentials, or sensitive connection strings.
+
+Keep environment-specific settings outside source control and document required configuration variables without including their secret values.
 
 ## Testing
 
-Automated tests will be documented here as the test projects and test suites are implemented.
+Automated test instructions will be added as test projects and test suites are implemented.
 
 ## Project Status
 
-The project is currently under development. Features and setup instructions may evolve as development progresses.
+MIO is under active development. This README documents the current backend foundation and will evolve as features are implemented.
