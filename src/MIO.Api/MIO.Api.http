@@ -1,0 +1,4 @@
+@Baseurl = http://localhost:7216
+
+GET {{Baseurl}}
+###
